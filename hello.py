@@ -1,5 +1,5 @@
-print("Tim says hello ")
+print "Tim says hello " 
 a = 7
 b = 8+28
-print(a+b)
+print a+b
 
