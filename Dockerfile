@@ -6,9 +6,11 @@ RUN apt-get update && apt-get install -yq --no-install-recommends \
 	cron \
 	&& apt-get clean && rm -rf /var/lib/apt/lists/*
 
-COPY . /app
+COPY . /usr/src/app
 
-RUN echo "*/3**** /app/job.sh" | crontab
+WORKDIR /usr/src/app
 
-CMD ["bash", "/app/start.sh"]
+RUN echo "*/3 * * * * usr/src/app/job.sh" | crontab
+
+CMD ["bash", "start.sh"]
 
